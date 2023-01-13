@@ -1,0 +1,22 @@
+
+domain: localhost
+
+version: latest
+
+image:
+  registry: ghcr.io
+  repository: andrejpetras/todo-ui
+  tag: latest
+
+replicas: 1
+
+service:
+  port: 80
+
+pod:
+  port: 8080
+
+livenessProbe:
+  url: /healthcheck
+readinessProbe:
+  url: /healthcheck  
