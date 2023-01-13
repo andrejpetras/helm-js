@@ -41,3 +41,11 @@ spec:
             timeoutSeconds: 3
             successThreshold: 1
             failureThreshold: 5
+          env:
+          {{- if .Values.env }}
+          {{- range $key,$val := .Values.env }}
+            - name: {{ $key }}
+              value: {{ tpl ($val|toString) $ | quote }}
+          {{- end }}
+          {{- end }}
+
